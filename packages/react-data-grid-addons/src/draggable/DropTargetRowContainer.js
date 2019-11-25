@@ -17,16 +17,7 @@ const rowDropTarget = (Row) => class extends React.Component {
     const overlayTop = this.props.idx * this.props.height;
     return connectDropTarget(
       <div>
-        <Row ref={(node) => this.row = node} {...this.props} />
-        {isOver && canDrop && (
-          <div
-            className="rowDropTarget"
-            style={{
-              top: overlayTop,
-              height: this.props.height
-            }}
-          />
-        )}
+        <Row extraClasses={isOver && canDrop && (this.props.isOverExtraClasses)} ref={(node) => this.row = node} {...this.props} />
       </div>
     );
   }
